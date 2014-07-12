@@ -28,20 +28,25 @@ hello world
 ```
 
 ## API
-#### `with-status :: StatusCode → Result → Result`
-Adds the HTTP status to the Result.
-##### `ok ≡ with-status 200`
-##### `not-found ≡ with-status 404`
-##### `error ≡ with-status 500`
-#### `with-header :: Name → Value → Result → Result`
+### `with-status :: StatusCode → Result → Result`
+Adds the HTTP status to the Result. Partially applied as:
+```haskell
+ok ≡ with-status 200
+not-found ≡ with-status 404
+error ≡ with-status 500
+```
+### `with-header :: Name → Value → Result → Result`
 Adds the HTTP header to the result.
-#### `redirect :: StatusCode → URI → Result → Result`
-Sets 3XX status and Location header.
-##### `moved-permanently ≡ redirect 301`
-##### `found ≡ redirect 302`
-##### `see-other ≡ redirect 303`
-##### `temporary-redirect ≡ redirect 307`
-##### `permanent-redirect ≡ redirect 308`
+
+### `redirect :: StatusCode → URI → Result → Result`
+Sets 3XX status and Location header. Partially applied as:
+```haskell
+moved-permanently ≡ redirect 301
+found ≡ redirect 302
+see-other ≡ redirect 303
+temporary-redirect ≡ redirect 307
+permanent-redirect ≡ redirect 308
+```
 
 ## Licence
 MIT
