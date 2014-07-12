@@ -24,5 +24,13 @@
   "bugs": {
     "url": "https://github.com/quarterto/Dram/issues"
   },
-  "homepage": "https://github.com/quarterto/Dram"
+  "homepage": "https://github.com/quarterto/Dram",
+  "devDependencies": {
+    "LiveScript": "^1.2.0",
+    "mocha": "^1.20.1"
+  },
+  "dependencies": {
+    "highland": "git://github.com/quarterto/highland#otherwise",
+    "oban-response": "0.0.0"
+  }
 }
