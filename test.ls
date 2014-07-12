@@ -46,3 +46,35 @@ export 'Dram':
 				expect xs.2 .to.be 'hello'
 				done!
 
+		'found is redirect 302': (done)->
+			dram.found '/foo' 'hello' .to-array (xs)->
+				expect xs.0 .to.have.property \name  \Location
+				expect xs.0 .to.have.property \value '/foo'
+				expect xs.1 .to.have.property \code 302
+				expect xs.2 .to.be 'hello'
+				done!
+
+		'see-other is redirect 303': (done)->
+			dram.see-other '/foo' 'hello' .to-array (xs)->
+				expect xs.0 .to.have.property \name  \Location
+				expect xs.0 .to.have.property \value '/foo'
+				expect xs.1 .to.have.property \code 303
+				expect xs.2 .to.be 'hello'
+				done!
+
+		'temporary-redirect is redirect 307': (done)->
+			dram.temporary-redirect '/foo' 'hello' .to-array (xs)->
+				expect xs.0 .to.have.property \name  \Location
+				expect xs.0 .to.have.property \value '/foo'
+				expect xs.1 .to.have.property \code 307
+				expect xs.2 .to.be 'hello'
+				done!
+				
+		'permanent-redirect is redirect 308': (done)->
+			dram.permanent-redirect '/foo' 'hello' .to-array (xs)->
+				expect xs.0 .to.have.property \name  \Location
+				expect xs.0 .to.have.property \value '/foo'
+				expect xs.1 .to.have.property \code 308
+				expect xs.2 .to.be 'hello'
+				done!
+
