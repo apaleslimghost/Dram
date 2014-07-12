@@ -1,4 +1,5 @@
-# Dram
+# Dram [![Build Status](https://travis-ci.org/quarterto/Dram.svg)](https://travis-ci.org/quarterto/Dram)
+
 Expressive response generators for Oban. Inspired by [Play! Framework](http://www.playframework.com/)'s [Results](http://www.playframework.com/documentation/2.0/api/java/play/mvc/Results.html) class.
 
 `npm install dram`
