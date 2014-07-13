@@ -16,24 +16,16 @@ enhance = (import {
 export
 	with-status = (code, rest)-->
 		first = true
-		wrap-stream rest
-		.consume (err, x, push, next)->
-			if err
-				push err
-				next!
-			else if first
-				if x instanceof ρ.Status
-					push null ρ.Status code
-					next!
-				else
-					push null ρ.Status code
-					push null x
-					next!
+		enhance <| wrap-stream rest .flat-map (x)->
+			if first
 				first := false
-			else
-				push null x
-				next!
-		|> enhance
+				if x instanceof ρ.Status
+					[ρ.Status code]
+				else [
+					ρ.Status code
+					x
+				]
+			else [x]
 
 	ok = with-status 200
 	not-found = with-status 404
