@@ -78,3 +78,16 @@ export 'Dram':
 				expect xs.2 .to.be 'hello'
 				done!
 
+	'chaining api':
+		'can chain with-header': (done)->
+			dram.ok 'hello' .with-header \foo \bar .to-array (xs)->
+				expect xs.0 .to.have.property \name  \foo
+				expect xs.0 .to.have.property \value \bar
+				expect xs.1 .to.have.property \code 200
+				expect xs.2 .to.be 'hello'
+				done!
+		'can chain with-status': (done)->
+			dram.ok 'hello' .with-status 500 .to-array (xs)->
+				expect xs.0 .to.have.property \code 500
+				expect xs.1 .to.be 'hello'
+				done!
