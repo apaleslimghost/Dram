@@ -1,5 +1,5 @@
 σ = require \highland
-ρ = require \oban-response
+ρ = require \peat
 
 wrap-stream = (a)->
 	| σ.is-stream a => a
