@@ -31,7 +31,7 @@
     "mocha": "^1.20.1"
   },
   "dependencies": {
-    "highland": "git://github.com/quarterto/highland#otherwise",
+    "highland": "^1.26.3",
     "peat": "^0.1.0"
   }
 }
