@@ -14,6 +14,7 @@ enhance = (import {
 })
 
 export
+	simple = enhance . wrap-stream
 	with-status = (code, rest)-->
 		first = true
 		enhance <| wrap-stream rest .flat-map (x)->
