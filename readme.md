@@ -12,8 +12,7 @@ var resp   = require('dram');
 var http   = require('http');
 
 http.createServer(handle(function(req) {
-	var o = resp.ok('hello world')
-	return resp.withHeader('X-Powered-By', 'Oban', o);
+	return resp.ok('hello world').withHeader('X-Powered-By', 'Oban');
 })).listen(8000);
 ```
 
@@ -28,17 +27,19 @@ hello world
 ```
 
 ## API
-### `with-status :: StatusCode → Result → Result`
-Adds the HTTP status to the Result. Partially applied as:
+#### `simple :: Body → Result`
+Wraps any body-like object (String, Buffer, Array of String or Buffer, Stream of String or Buffer) in Result, so it can be chained.
+#### `with-status :: StatusCode → Result → Result`
+Adds the HTTP status to the Result. Can be called as a chained method on Results. Partially applied as:
 ```haskell
 ok ≡ with-status 200
 not-found ≡ with-status 404
 error ≡ with-status 500
 ```
-### `with-header :: Name → Value → Result → Result`
-Adds the HTTP header to the result.
+#### `with-header :: Name → Value → Result → Result`
+Adds the HTTP header to the result.  Can be called as a chained method on Results.
 
-### `redirect :: StatusCode → URI → Result → Result`
+#### `redirect :: StatusCode → URI → Result → Result`
 Sets 3XX status and Location header. Partially applied as:
 ```haskell
 moved-permanently ≡ redirect 301
