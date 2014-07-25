@@ -43,6 +43,14 @@ export 'Dram':
 				expect xs.1 .to.be 'hello'
 				done!
 
+	'type':
+		'sets the content-type header': (done)->
+			dram.type 'application/json' 'hello' .to-array (xs)->
+				expect xs.0 .to.have.property \name  \content-type
+				expect xs.0 .to.have.property \value \application/json
+				expect xs.1 .to.be 'hello'
+				done!
+
 	'redirect':
 		'adds a status and a location header': (done)->
 			dram.redirect 302 '/foo' 'hello' .to-array (xs)->

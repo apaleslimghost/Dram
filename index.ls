@@ -34,6 +34,7 @@ export
 
 	with-header = (name, value, rest)-->
 		σ [ρ.Header name, value] .concat wrap-stream rest |> enhance
+	type = with-header \content-type
 
 	redirect = (code, location, rest)-->
 		enhance wrap-stream rest
