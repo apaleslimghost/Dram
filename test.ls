@@ -77,6 +77,14 @@ export 'Dram':
 					expect xs.2 .to.be '{}'
 					done!
 
+	'cookie':
+		'sets a cookie header': (done)->
+			dram.cookie 'foo' 'bar' 'hello' .to-array (xs)->
+				expect xs.0 .to.have.property \name  \set-cookie
+				expect xs.0 .to.have.property \value 'foo=bar'
+				expect xs.1 .to.be 'hello'
+				done!
+
 	'redirect':
 		'adds a status and a location header': (done)->
 			dram.redirect 302 '/foo' 'hello' .to-array (xs)->

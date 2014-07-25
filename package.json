@@ -31,6 +31,7 @@
     "mocha": "^1.20.1"
   },
   "dependencies": {
+    "cookie": "^0.1.2",
     "highland": "^1.26.3",
     "peat": "^0.1.0"
   }

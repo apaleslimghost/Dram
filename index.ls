@@ -1,5 +1,6 @@
 σ = require \highland
 ρ = require \peat
+oreo = require \cookie
 
 wrap-stream = (a)->
 	| σ.is-stream a => a
@@ -40,6 +41,10 @@ export
 	json = ok . type \application/json
 	html = ok . type \text/html
 	text = ok . type \text/plain
+
+	cookie = (k, v, rest)-->
+		with-header \set-cookie (oreo.serialize k, v), rest
+	
 
 	redirect = (code, location, rest)-->
 		enhance wrap-stream rest
