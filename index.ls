@@ -34,7 +34,12 @@ export
 
 	with-header = (name, value, rest)-->
 		σ [ρ.Header name, value] .concat wrap-stream rest |> enhance
+
 	type = with-header \content-type
+
+	json = ok . type \application/json
+	html = ok . type \text/html
+	text = ok . type \text/plain
 
 	redirect = (code, location, rest)-->
 		enhance wrap-stream rest
