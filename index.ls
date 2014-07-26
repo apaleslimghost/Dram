@@ -42,9 +42,11 @@ export
 	html = ok . type \text/html
 	text = ok . type \text/plain
 
-	cookie = (k, v, rest)-->
-		with-header \set-cookie (oreo.serialize k, v), rest
-	
+	with-cookie = (k, v, opts, rest)-->
+		with-header \set-cookie (oreo.serialize k, v, opts), rest
+
+	with-cookie-simple = (k, v, rest)-->
+		with-cookie k, v, null, rest
 
 	redirect = (code, location, rest)-->
 		enhance wrap-stream rest

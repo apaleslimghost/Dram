@@ -78,10 +78,17 @@ export 'Dram':
 					done!
 
 	'cookie':
-		'sets a cookie header': (done)->
-			dram.cookie 'foo' 'bar' 'hello' .to-array (xs)->
+		'simple sets a cookie header': (done)->
+			dram.with-cookie-simple 'foo' 'bar' 'hello' .to-array (xs)->
 				expect xs.0 .to.have.property \name  \set-cookie
 				expect xs.0 .to.have.property \value 'foo=bar'
+				expect xs.1 .to.be 'hello'
+				done!
+		'full sets a cookie header with options': (done)->
+			dram.with-cookie 'foo' 'bar' path:'/foo' domain:'example.com', 'hello'
+			.to-array (xs)->
+				expect xs.0 .to.have.property \name  \set-cookie
+				expect xs.0 .to.have.property \value 'foo=bar; Domain=example.com; Path=/foo'
 				expect xs.1 .to.be 'hello'
 				done!
 
