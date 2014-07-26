@@ -49,5 +49,17 @@ temporary-redirect ≡ redirect 307
 permanent-redirect ≡ redirect 308
 ```
 
+#### `type :: ContentType → Result → Result`
+Shorthand for `with-header 'content-type'`.
+
+#### `json`, `html`, `text`
+Shorthand for `type 'application/json'`, `type 'text/html'` and `type 'text/plain'` respectively.
+
+#### `with-cookie :: Name → Value → CookieOptions → Request → Request`
+Serialises a cookie value using [cookie](https://github.com/defunctzombie/node-cookie), and does `with-header 'set-cookie'` with it. For information on the possible options, see [cookie's documentation](https://github.com/defunctzombie/node-cookie#more).
+
+#### `with-session-cookie :: Name → Value → Request → Request`
+Set a cookie with no expiry (or other options).
+
 ## Licence
 MIT

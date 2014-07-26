@@ -78,8 +78,8 @@ export 'Dram':
 					done!
 
 	'cookie':
-		'simple sets a cookie header': (done)->
-			dram.with-cookie-simple 'foo' 'bar' 'hello' .to-array (xs)->
+		'session sets a cookie header': (done)->
+			dram.with-session-cookie 'foo' 'bar' 'hello' .to-array (xs)->
 				expect xs.0 .to.have.property \name  \set-cookie
 				expect xs.0 .to.have.property \value 'foo=bar'
 				expect xs.1 .to.be 'hello'

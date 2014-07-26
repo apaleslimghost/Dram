@@ -12,7 +12,7 @@ to-method = (fn)->
 methods = -> {[k, to-method v] for k, v of it}
 
 enhance = (import methods {
-	with-header, with-status, with-cookie, with-cookie-simple
+	with-header, with-status, with-cookie, with-session-cookie
 })
 
 export
@@ -46,7 +46,7 @@ export
 	with-cookie = (k, v, opts, rest)-->
 		with-header \set-cookie (oreo.serialize k, v, opts), rest
 
-	with-cookie-simple = (k, v, rest)-->
+	with-session-cookie = (k, v, rest)-->
 		with-cookie k, v, null, rest
 
 	redirect = (code, location, rest)-->
