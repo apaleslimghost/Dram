@@ -9,9 +9,10 @@ wrap-stream = (a)->
 to-method = (fn)->
 	(...args)-> fn ...args, this
 
-enhance = (import {
-	with-status: to-method with-status
-	with-header: to-method with-header
+methods = -> {[k, to-method v] for k, v of it}
+
+enhance = (import methods {
+	with-header, with-status, with-cookie, with-cookie-simple
 })
 
 export
