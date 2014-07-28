@@ -53,8 +53,8 @@ export 'Dram':
 
 	'type shortcuts':
 		'json':
-			'sets content type to json and status 200': (done)->
-				dram.json '{}' .to-array (xs)->
+			'stringifies, sets content type to json and status 200': (done)->
+				dram.json {}, .to-array (xs)->
 					expect xs.0 .to.have.property \code  200
 					expect xs.1 .to.have.property \name  \content-type
 					expect xs.1 .to.have.property \value \application/json

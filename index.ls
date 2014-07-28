@@ -39,7 +39,7 @@ export
 
 	type = with-header \content-type
 
-	json = ok . type \application/json
+	json = ok . (type \application/json) . JSON.stringify
 	html = ok . type \text/html
 	text = ok . type \text/plain
 
